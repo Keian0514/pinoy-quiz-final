@@ -41,11 +41,11 @@ body.categories-screen {
 	flex-direction: column;
 	position: relative;
 	isolation: isolate;
-	width: min(100% - 40px, 480px);
+	width: 100%;
 	height: 100vh;
 	height: 100svh;
 	margin: 0 auto;
-	padding: 20px 0 0;
+	padding: 10px 0 0;
 	overflow: hidden;
 	background-color: transparent !important;
 }
@@ -55,6 +55,24 @@ body.categories-screen {
 	align-items: center;
 	justify-content: space-between;
 	min-height: 40px;
+	width: 100%;
+	padding: 10px 20px;
+}
+
+.toolbar-actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.page-toolbar .theme-toggle-btn {
+	position: static;
+	flex: 0 0 44px;
+	margin-right: 15px;
+}
+
+.rounds-badge {
+	margin-left: 10px;
 }
 
 .back-link {

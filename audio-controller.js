@@ -54,13 +54,17 @@ function normalizeSongPath(songPath) {
 function playMusic(songPath, resumePosition = false, savedPlaybackTime = 0) {
     const selectedSong = normalizeSongPath(songPath);
     const shouldPlay = localStorage.getItem(musicStorageKey) === "true";
+    const currentSong = audio.getAttribute("src");
+    const isSameSong = currentSong === selectedSong;
 
-    audio.pause();
-    audio.currentTime = 0;
-    if (!resumePosition) {
-        localStorage.setItem(timeStorageKey, "0");
+    if (!isSameSong) {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.src = selectedSong;
+        if (!resumePosition) {
+            localStorage.setItem(timeStorageKey, "0");
+        }
     }
-    audio.src = selectedSong;
     audio.loop = true;
     audio.muted = !shouldPlay;
 
@@ -75,10 +79,12 @@ function playMusic(songPath, resumePosition = false, savedPlaybackTime = 0) {
         if (shouldPlay) startPlayback();
     };
 
-    audio.addEventListener("loadedmetadata", startSelectedTrack, { once: true });
-    audio.load();
-
-    if (audio.readyState >= 1) startSelectedTrack();
+    if (audio.readyState >= 1) {
+        startSelectedTrack();
+    } else {
+        audio.addEventListener("loadedmetadata", startSelectedTrack, { once: true });
+        if (!isSameSong) audio.load();
+    }
 
     if (musicSelect) {
         musicSelect.value = selectedSong;
@@ -90,6 +96,15 @@ function savePlaybackPosition() {
 
     localStorage.setItem(timeStorageKey, String(audio.currentTime));
 }
+
+let lastSavedPlaybackSecond = -1;
+audio.addEventListener("timeupdate", () => {
+    const currentSecond = Math.floor(audio.currentTime);
+    if (currentSecond !== lastSavedPlaybackSecond) {
+        lastSavedPlaybackSecond = currentSecond;
+        savePlaybackPosition();
+    }
+});
 
 function startPlayback() {
     audio.muted = false;
@@ -232,7 +247,8 @@ if (musicSelect) {
     });
 }
 
-window.addEventListener("beforeunload", savePlaybackPosition, { once: true });
+window.addEventListener("pagehide", savePlaybackPosition);
+window.addEventListener("beforeunload", savePlaybackPosition);
 
 if (volumeSlider) {
     volumeSlider.addEventListener("input", () => updateAudioVolume(volumeSlider.value));
@@ -284,4 +300,4 @@ window.playMusic = playMusic;
 window.updateAudioState = updateMusicState;
 window.updateSfxState = updateSfxState;
 window.saveMusicSelection = saveMusicSelection;
-window.addEventListener("load", initializeAudio, { once: true });
+initializeAudio();

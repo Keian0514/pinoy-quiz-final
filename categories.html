@@ -17,9 +17,6 @@
 </head>
 
 <body class="categories-screen">
-	<button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
-		<img id="theme-icon" src="assets/decor/sun.svg" alt="Theme Toggle">
-	</button>
 	<div class="clouds" aria-hidden="true"></div>
 	<main class="categories-page">
 		<div class="page-toolbar">
@@ -29,7 +26,12 @@
 				</svg>
 				<span data-i18n="back">Back</span>
 			</a>
-			<span class="rounds-badge" data-i18n="rounds" data-i18n-count="6">6 ROUNDS</span>
+			<div class="toolbar-actions">
+				<span class="rounds-badge" data-i18n="rounds" data-i18n-count="6">6 ROUNDS</span>
+				<button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+					<img id="theme-icon" src="assets/decor/sun.svg" alt="Theme Toggle">
+				</button>
+			</div>
 		</div>
 
 		<header class="page-heading">
