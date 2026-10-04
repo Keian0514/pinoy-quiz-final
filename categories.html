@@ -11,13 +11,17 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="categories.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<script src="theme.js"></script>
 	<script src="i18n.js" defer></script>
 	<script src="audio-controller.js" defer></script>
 </head>
 
-<body>
+<body class="categories-screen">
+	<button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+		<img id="theme-icon" src="assets/decor/sun.svg" alt="Theme Toggle">
+	</button>
 	<div class="clouds" aria-hidden="true"></div>
-	<main class="categories-page categories-screen">
+	<main class="categories-page">
 		<div class="page-toolbar">
 			<a class="back-link" href="home.html">
 				<svg aria-hidden="true" viewBox="0 0 24 24" fill="none">

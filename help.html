@@ -9,10 +9,14 @@
 	<link rel="manifest" href="manifest.json">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="help.css">
+	<script src="theme.js"></script>
 	<script src="i18n.js" defer></script>
 	<script src="audio-controller.js" defer></script>
 </head>
 <body>
+	<button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+		<img id="theme-icon" src="assets/decor/sun.svg" alt="Theme Toggle">
+	</button>
 	<div class="clouds"></div>
 	<main class="help-page">
 		<section class="help-card" aria-labelledby="help-title">

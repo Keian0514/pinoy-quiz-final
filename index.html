@@ -8,9 +8,13 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="splash.css">
+    <script src="theme.js"></script>
     <script src="audio-controller.js" defer></script>
 </head>
 <body class="splash-screen">
+    <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <img id="theme-icon" src="assets/decor/sun.svg" alt="Theme Toggle">
+    </button>
     <div class="clouds" aria-hidden="true"></div>
     <main class="splash-content" aria-label="Pinoy Quiz">
         <img class="splash-logo" src="logo.svg" alt="Pinoy Quiz logo" width="120" height="120">

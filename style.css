@@ -44,6 +44,192 @@ body {
     color: var(--navy);
 }
 
+html.dark-mode,
+body.dark-mode {
+    color-scheme: dark;
+    --navy: #F9F5EE;
+    --white: #14232E;
+    --light-cream: #0B161E;
+    --border-grey: #243B4A;
+    --text-grey: #A0B2C0;
+}
+
+html.dark-mode body,
+body.dark-mode {
+    background-color: #0B161E;
+    background-image:
+        linear-gradient(rgba(11, 22, 30, 0.65), rgba(11, 22, 30, 0.65)),
+        url("assets/decor/night-landscape.svg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+html.dark-mode body.splash-screen,
+body.dark-mode.splash-screen {
+    background-color: #0B161E;
+    background-image:
+        linear-gradient(rgba(11, 22, 30, 0.65), rgba(11, 22, 30, 0.65)),
+        url("assets/decor/night-landscape.svg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.theme-toggle-btn {
+    position: fixed;
+    z-index: 9999;
+    top: 16px;
+    right: 16px;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.theme-toggle-btn:focus-visible {
+    outline: 3px solid var(--gold-accent);
+    outline-offset: 3px;
+}
+
+#theme-icon {
+    display: block;
+    width: 28px;
+    height: 28px;
+    background: transparent !important;
+    object-fit: contain;
+    transform: rotate(0);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle-btn.is-spinning #theme-icon {
+    transform: rotate(-360deg);
+}
+
+.stars-container {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    display: none;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+html.dark-mode .stars-container,
+body.dark-mode .stars-container {
+    display: block;
+}
+
+.stars-container span {
+    position: absolute;
+    top: 10%;
+    right: -180px;
+    display: block;
+    width: 180px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba(249, 245, 238, 0.95));
+    box-shadow: 0 0 8px rgba(249, 245, 238, 0.75);
+    opacity: 0;
+    transform: rotate(-45deg);
+    animation: shooting-star 5s linear infinite;
+}
+
+.stars-container span:nth-child(2) {
+    top: 34%;
+    right: -210px;
+    width: 210px;
+    animation-delay: 1.7s;
+}
+
+.stars-container span:nth-child(3) {
+    top: 61%;
+    right: -145px;
+    width: 145px;
+    animation-delay: 3.35s;
+}
+
+@keyframes shooting-star {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(-45deg);
+    }
+    7% {
+        opacity: 0.9;
+    }
+    38%,
+    100% {
+        opacity: 0;
+        transform: translate(-110vw, 78vh) rotate(-45deg);
+    }
+}
+
+html.dark-mode .clouds,
+body.dark-mode .clouds {
+    display: none;
+}
+
+html.dark-mode .app-container,
+html.dark-mode .help-card,
+html.dark-mode .settings-card,
+html.dark-mode .question-card,
+html.dark-mode .leaderboard-panel,
+html.dark-mode .level-modal {
+    border-color: var(--border-grey);
+    background: rgba(20, 35, 46, 0.88);
+    color: var(--navy);
+}
+
+html.dark-mode .question-image,
+html.dark-mode .level-label,
+html.dark-mode #language-select,
+html.dark-mode #musicSelector,
+html.dark-mode .score-name-field input,
+html.dark-mode .scores-table th {
+    border-color: var(--border-grey);
+    background: rgba(20, 35, 46, 0.92);
+    color: var(--navy);
+}
+
+html.dark-mode .category-card {
+    border-color: var(--border-grey);
+    background-color: rgba(20, 35, 46, 0.88) !important;
+    background-image: none;
+}
+
+html.dark-mode .category-card::after {
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+}
+
+html.dark-mode .category-name,
+html.dark-mode .category-count {
+    color: var(--navy);
+}
+
+html.dark-mode body .menu-button,
+html.dark-mode body .option-button,
+html.dark-mode body .next-button,
+html.dark-mode body .modal-action,
+html.dark-mode body .modal-icon-button,
+html.dark-mode body .back-home,
+html.dark-mode body .reset-button,
+html.dark-mode body .home-button,
+html.dark-mode body .empty-state-button {
+    border-color: var(--gold-accent);
+    background-color: var(--white);
+    color: var(--navy);
+}
+
+html.dark-mode .modal-icon-button,
+html.dark-mode .modal-icon-button svg {
+    color: var(--gold-accent);
+}
+
 h1,
 h2,
 h3,
