@@ -54,6 +54,12 @@ body.dark-mode {
     --text-grey: #A0B2C0;
 }
 
+html.dark-mode body *,
+body.dark-mode * {
+    color: #F9F5EE !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85) !important;
+}
+
 html.dark-mode body,
 body.dark-mode {
     background-color: #0B161E;
@@ -198,7 +204,7 @@ html.dark-mode .scores-table th {
 
 html.dark-mode .category-card {
     border-color: var(--border-grey);
-    background-color: rgba(20, 35, 46, 0.88) !important;
+    background-color: #1D3A4B !important;
     background-image: none;
 }
 
